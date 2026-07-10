@@ -14,4 +14,5 @@ test('get started link', async ({ page }) => {
   // Click the get started link.
   await page.getByRole('link', { name: 'Get started' }).click();
   //add comment
+  //dar vienas komentaras
 });
