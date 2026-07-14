@@ -67,7 +67,7 @@ logoutPage.userLogout();
 }
 );
 
-test.only('teksto tikrinimas', async ({ page }) => {
+test('teksto tikrinimas', async ({ page }) => {
     const loginPage = new LoginPage(page);
     loginPage.userLoginWithPassword('standard_user', 'secret_sauce');
     
@@ -75,9 +75,3 @@ test.only('teksto tikrinimas', async ({ page }) => {
     await expect(backpack).toHaveText('Sauce Labs Backpack');
 }
 );
-
-
-
-for (let i=1; i <=6; i++ ){
-    
-}
