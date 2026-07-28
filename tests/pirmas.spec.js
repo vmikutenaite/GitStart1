@@ -74,7 +74,7 @@ test('teksto tikrinimas', async ({ page }) => {
     const backpack = page.locator('[data-test="inventory-item-name"]').first();
     await expect(backpack).toHaveText('Sauce Labs Backpack');
 
-        // const addToCartNumber = page.locator('.btn.btn_primary.btn_small.btn_inventory').count();
+    // const addToCartNumber = page.locator('.btn.btn_primary.btn_small.btn_inventory').count();
     // console.log('Gautas skaičius' + addToCartNumber);
     // const backPackAddButton = page.locator('.btn.btn_primary.btn_small.btn_inventory').first();
 
