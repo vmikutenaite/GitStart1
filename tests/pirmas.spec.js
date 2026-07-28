@@ -69,9 +69,20 @@ logoutPage.userLogout();
 
 test('teksto tikrinimas', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    loginPage.userLoginWithPassword('standard_user', 'secret_sauce');
+    await loginPage.userLoginWithPassword('standard_user', 'secret_sauce');
     
     const backpack = page.locator('[data-test="inventory-item-name"]').first();
     await expect(backpack).toHaveText('Sauce Labs Backpack');
+
+        // const addToCartNumber = page.locator('.btn.btn_primary.btn_small.btn_inventory').count();
+    // console.log('Gautas skaičius' + addToCartNumber);
+    // const backPackAddButton = page.locator('.btn.btn_primary.btn_small.btn_inventory').first();
+
+    // for (let i=1; i<=addToCartNumber; i++){
+    // await backPackAddButton.click();
+    // }
+
+    const addCartPage = new AddCartPage(page);
+    await addCartPage.addAllItems('.btn.btn_primary.btn_small.btn_inventory');
 }
 );
