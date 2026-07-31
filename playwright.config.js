@@ -1,5 +1,27 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
+const { defineConfig, devices } = require('@playwright/test');
+const { defineBddConfig } = require('playwright-bdd');
+
+// Define BDD configuration
+const testDir = defineBddConfig({
+  features: 'features/**/*.feature',
+  steps: 'steps/**/*.js',
+});
+
+module.exports = defineConfig({
+  testDir,
+  reporter: [['html', { open: 'never' }]],
+  use: {
+    trace: 'on-first-retry',
+    headless: true,
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
+});
 
 /**
  * Read environment variables from file.
