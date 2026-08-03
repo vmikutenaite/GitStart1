@@ -4,23 +4,24 @@ const { defineBddConfig } = require('playwright-bdd');
 
 // Define BDD configuration
 const testDir = defineBddConfig({
-  features: 'features/**/*.feature',
-  steps: 'steps/**/*.js',
+  features: 'features/**/*.feature',
+  steps: 'steps/**/*.js',
 });
 
 module.exports = defineConfig({
-  testDir,
-  reporter: [['html', { open: 'never' }]],
-  use: {
-    trace: 'on-first-retry',
-    headless: true,
-  },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-  ],
+  testDir,
+  reporter: [['html', { open: 'never' }]],
+  use: {
+    trace: 'on-first-retry',
+    headless: false,
+    // padarius pakeitima i headed, matosi, kad neveikia prisiloginimas
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
 });
 
 /**
@@ -48,7 +49,8 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
+    headless: false,
+    /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -62,15 +64,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {

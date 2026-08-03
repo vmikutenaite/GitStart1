@@ -9,12 +9,16 @@ Given('I am logged in', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await page.goto('https://www.saucedemo.com/');
   await loginPage.userName.fill('standard_user');
-  await loginPage.password.fill('secret_sauce!');
+  // neveikia login, nes paliktas šauktukas password gale
+  await loginPage.password.fill('secret_sauce');
   await loginPage.loginButton.click();
+  await page.pause();
 });
 
-Given('I add backpack item in inventory page', async ({ page }) => {
+When('I add backpack item in inventory page', async ({ page }) => {
 const addCartPage = new AddCartPage(page);
+  await page.pause();
+
 await addCartPage.addItem.click();
 });
 
