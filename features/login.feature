@@ -6,9 +6,16 @@
 #     Then I click the submit button
 
 
-Feature: Data Entry Form
+# Feature: Data Entry Form
 
-Scenario: Data Entry Form
+# Scenario: Data Entry Form
+#     Given I am on the data form page
+#     When I enter all my data
+#     Then I click the submit button with data picker
+
+
+Feature: Slider
+
+Scenario: Slider
     Given I am on the data form page
-    When I enter all my data
-    Then I click the submit button with data picker
+    When I use slider
